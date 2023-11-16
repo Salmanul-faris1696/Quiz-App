@@ -112,7 +112,7 @@ function NavBar(id) {
           {isSearchOpen ? (
             <input
               type="text"
-              className="border rounded-md p-2"
+              className="border rounded-md p-2 w-full"
               placeholder="Search..."
               value={searchText}
               onChange={handleInputChange}
