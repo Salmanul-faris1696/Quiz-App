@@ -35,7 +35,7 @@ function Results({ correctAnswers,timeTaken }) {
 
             <div className=' text-white  mt-10 text-2xl flex justify-center items-center gap-2'>
 
-                <MdTimer className='text-yellow-500' size={25}  />
+                <MdTimer className='text-yellow-500 text-base' size={25}  />
 
                 You complete with in :
                 <span className='text-blue-500'>
