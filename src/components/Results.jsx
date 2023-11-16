@@ -27,15 +27,15 @@ function Results({ correctAnswers,timeTaken }) {
         <Confetti className='absolute' width={width} height={height}/>
         <div className='bg-black  rounded-lg   border-2 border-yellow-500  font-name w-[100%] p-2'>
 
-            <div className='text-3xl  text-center  text-yellow-500 flex justify-center items-center gap-3  '>
+            <div className='text-base md:text-3xl  text-center  text-yellow-500 flex justify-center items-center gap-3  '>
                 <AiOutlineFileDone   className='text-yellow-500' size={25} />
 
                 Questions completed !!
             </div>
 
-            <div className=' text-white  mt-10 text-2xl flex justify-center items-center gap-2'>
+            <div className=' text-white text-base md:text-2xl  mt-10 flex justify-center items-center gap-2'>
 
-                <MdTimer className='text-yellow-500 text-base' size={25}  />
+                <MdTimer className='text-yellow-500 ' size={25}  />
 
                 You complete with in :
                 <span className='text-blue-500'>
@@ -45,7 +45,7 @@ function Results({ correctAnswers,timeTaken }) {
 
             </div>
 
-            <div className=' text-white  mt-10  text-2xl flex justify-center items-center gap-2'>
+            <div className=' text-white  mt-10  text-base md:text-2xl flex justify-center items-center gap-2'>
                  
                 <BsTrophyFill className='text-yellow-500' size={25} />
                  Your scored : <span className='text-blue-500'>{correctAnswers} </span>
