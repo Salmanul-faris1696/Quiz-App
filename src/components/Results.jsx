@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Confetti from 'react-confetti';
+import { AiOutlineFileDone } from "react-icons/ai";
 import { BsTrophyFill } from "react-icons/bs";
 import { MdTimer } from "react-icons/md";
-import { AiOutlineFileDone } from "react-icons/ai";
-import useWindowSize from 'react-use/lib/useWindowSize'
-import Confetti from 'react-confetti'
 import { useNavigate } from 'react-router-dom';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 
 function Results({ correctAnswers,timeTaken }) {
@@ -23,9 +23,9 @@ function Results({ correctAnswers,timeTaken }) {
  
 
   return (
-    <div className='mt-20'> 
-        <Confetti width={width} height={height}/>
-        <div className='bg-black p-5 rounded-lg   border-2 border-yellow-500  font-name w-[400px] mx-auto'>
+    <div className='mt-20 '> 
+        <Confetti className='absolute' width={width} height={height}/>
+        <div className='bg-black  rounded-lg   border-2 border-yellow-500  font-name w-[100%] p-2'>
 
             <div className='text-3xl  text-center  text-yellow-500 flex justify-center items-center gap-3  '>
                 <AiOutlineFileDone   className='text-yellow-500' size={25} />

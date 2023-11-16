@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { quizzes } from '../Data'
+import { useContext, useEffect, useState } from 'react'
 import Cards from '../components/Cards'
 import GlobalContext from '../context/GlobalContext'
+import { quizzes } from '../Data'
+
 
 
 export default function QuizzeHome() {
     const {searchText}  = useContext(GlobalContext)
-  const [quizData , setQizData] =useState(quizzes)
+  const [quizData ] =useState(quizzes)
   const [seacrhResults,setSearchResults] = useState([])
-  // console.log({searchText});
  useEffect(() => {
     setSearchResults(
       quizData.filter(
@@ -16,10 +16,7 @@ export default function QuizzeHome() {
       )
     );
   }, [searchText, quizData]);
-  // console.log({seacrhResults});
-
-  // setQizData((p) => p.filter())
-
+  
   return (
     <div className='grid grid-cols-2'>
 {

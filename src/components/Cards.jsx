@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../Data.js'
 import {TbMathSymbols} from 'react-icons/tb'
 import { SlChemistry } from 'react-icons/sl';
 import { GiDna2 } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
+import GlobalContext from '../context/GlobalContext.jsx';
 
 const subjectConfig = {
     math: {
@@ -32,11 +33,15 @@ const subjectConfig = {
   
   
   function Cards({id,img, title, questionns,subject}) {
-      
+
+
+       const { setSearchText}  = useContext(GlobalContext)
       const nav = useNavigate()
     
       const handleClick = () => {
-            nav(`/quiz/${id}`)
+        setSearchText('')    
+        nav(`/quiz/${id}`)
+
       }
     
 

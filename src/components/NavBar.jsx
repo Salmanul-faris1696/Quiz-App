@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react'
-import {IoSearchSharp} from 'react-icons/io5'
-import {BiMenuAltLeft}from 'react-icons/bi'
-import {AiFillCloseCircle} from 'react-icons/ai'
-import {TbMathSymbols} from 'react-icons/tb'
-import{GoGraph} from 'react-icons/go'
-import {SlChemistry} from 'react-icons/sl'
-import {GiDna2} from 'react-icons/gi'
-import GlobalContext from '../context/GlobalContext'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { AiFillCloseCircle } from 'react-icons/ai'
+import { BiMenuAltLeft } from 'react-icons/bi'
+import { GiDna2 } from 'react-icons/gi'
+import { IoSearchSharp } from 'react-icons/io5'
+import { SlChemistry } from 'react-icons/sl'
+import { TbMathSymbols } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
+import GlobalContext from '../context/GlobalContext'
 
 
 function NavBar(id) {
@@ -16,10 +15,10 @@ function NavBar(id) {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDraweropen ,setIsDraweropen] = useState(false);
-  // const [searchText, setSearchText] = useState('');
   const [searchSuggestions, setSearchSuggestions] = useState([]);
 
   const {searchText, setSearchText}  = useContext(GlobalContext)
+  const searchRef = useRef(null)
 
 
   const subjects = [
@@ -49,6 +48,7 @@ function NavBar(id) {
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
+    
   };
 
   const toggleDrawer = () => {
@@ -66,16 +66,23 @@ function NavBar(id) {
   const handleInputChange = (event) => {
     const input = event.target.value;
     setSearchText(input);
-    // const filteredSuggestions = searchData.filter((item) =>
-    //   item.toLowerCase().includes(input.toLowerCase())
-    // );
-    // setSearchSuggestions(filteredSuggestions);
+    
   };
    const nav = useNavigate()
     
       const navigateToSubject = (id) => {
             nav(`/quiz/${id}`)
       }
+
+      useEffect(() => {
+        
+     if (isSearchOpen && searchRef.current) {
+     
+      setTimeout(() => {
+        searchRef.current.focus();
+      }, 100);
+    }
+      },[isSearchOpen])
 
     
 
@@ -101,6 +108,7 @@ function NavBar(id) {
             <div className='flex gap-5 items-center'>
 
                <div className="flex items-center">
+                
           {isSearchOpen ? (
             <input
               type="text"
@@ -109,13 +117,14 @@ function NavBar(id) {
               value={searchText}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
+              ref={searchRef}
             />
           ) : (
             <div onClick={toggleSearch} className="flex items-center">
               <IoSearchSharp size={23} />
             </div>
           )}
-          {/* Search suggestions */}
+        
           {searchSuggestions.length > 0 && (
             <div className="absolute z-10 top-full left-0 bg-white w-full mt-1 rounded-md shadow-lg">
               {searchSuggestions.map((item, index) => (
